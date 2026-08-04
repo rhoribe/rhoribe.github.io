@@ -12,6 +12,7 @@
   --line: rgba(188, 199, 216, 0.28);
   --glow: rgba(84, 214, 187, 0.18);
   --grid: rgba(170, 200, 230, 0.06);
+  --icon-muted: #bcc7d8;
 }
 [data-theme="light"] {
   --bg: #f7fafc;
@@ -24,6 +25,7 @@
   --line: rgba(51, 77, 102, 0.2);
   --glow: rgba(8, 127, 104, 0.13);
   --grid: rgba(8, 90, 110, 0.08);
+  --icon-muted: #4c5d73;
 }
 * {
   box-sizing: border-box;
@@ -113,6 +115,45 @@ button:focus-visible {
   text-decoration: none;
   color: var(--muted);
   padding: 0.55rem 0;
+}
+.desktop-nav a,
+.mobile-nav a,
+.button,
+h3,
+.status,
+.icon-row,
+footer p,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+.icon-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--surface);
+}
+.icon-row {
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.card h3,
+.card p,
+.card li {
+  gap: 0.42rem;
+}
+.card h3 {
+  display: flex;
+  align-items: center;
+}
+.card li {
+  display: flex;
+  align-items: center;
 }
 .desktop-nav a.active {
   color: var(--text);
@@ -303,6 +344,9 @@ section {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px) rotateX(var(--tilt-y, 0)) rotateY(var(--tilt-x, 0));
 }
+.interactive-card:active {
+  transform: translateY(-1px);
+}
 .timeline-wrap {
   position: relative;
 }
@@ -371,6 +415,39 @@ footer {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.7fr);
     align-items: center;
+  }
+}
+@media (max-width: 47.99rem) {
+  .infra-nodes {
+    width: min(78vw, 20rem);
+    justify-self: center;
+    opacity: 0.5;
+  }
+  .hero {
+    min-height: 58vh;
+  }
+  section {
+    padding: 2.75rem 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .infra-nodes {
+    opacity: 0.55;
+  }
+  .interactive-card:hover,
+  .interactive-card:focus-within {
+    transform: none;
   }
 }
 @media (min-width: 64rem) {

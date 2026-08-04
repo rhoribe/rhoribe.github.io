@@ -6,6 +6,7 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { StaggerContainer } from "@/components/motion/stagger-container";
 import { InfrastructureNodes } from "@/components/visuals/infrastructure-nodes";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { AppIcon, IconBadge, TechnologyIcon } from "@/components/icons";
 import { profile } from "@/content/profile";
 import { expertise } from "@/content/expertise";
 import { experience } from "@/content/experience";
@@ -38,11 +39,11 @@ export default function Page() {
             </AnimatedText>
             <AnimatedText delay={0.26}>
               <p className="status">
-                <span aria-hidden />
+                <span aria-hidden /> <AppIcon name="reliability" size="compact" />
                 Building resilient cloud platforms
               </p>
               <a className="button" href="#experience">
-                View experience <b aria-hidden>→</b>
+                <AppIcon name="experience" size="compact" /> View experience <b aria-hidden>→</b>
               </a>
             </AnimatedText>
           </div>
@@ -54,16 +55,67 @@ export default function Page() {
             {profile.about} Ricardo focuses on operational excellence, scalability, availability,
             technical leadership, mentoring, and continuous improvement.
           </p>
+          <div className="icon-row" aria-label="Professional highlights">
+            <IconBadge>
+              <AppIcon name="experience" />
+            </IconBadge>
+            <IconBadge>
+              <AppIcon name="leadership" />
+            </IconBadge>
+            <IconBadge>
+              <AppIcon name="reliability" />
+            </IconBadge>
+            <IconBadge>
+              <AppIcon name="automation" />
+            </IconBadge>
+          </div>
         </AnimatedSection>
         <AnimatedSection id="expertise">
           <SectionHeading>Expertise</SectionHeading>
           <StaggerContainer className="grid">
             {expertise.map(([title, skills]) => (
               <Card key={title} tilt>
-                <h3>{title}</h3>
+                <h3>
+                  <AppIcon
+                    name={
+                      title.includes("Cloud")
+                        ? "cloud"
+                        : title.includes("Containers")
+                          ? "containers"
+                          : title.includes("Observability")
+                            ? "observability"
+                            : title.includes("CI")
+                              ? "cicd"
+                              : "reliability"
+                    }
+                  />{" "}
+                  {title}
+                </h3>
                 <ul>
                   {skills.map((skill) => (
-                    <li key={skill}>{skill}</li>
+                    <li key={skill}>
+                      {[
+                        "Kubernetes",
+                        "Docker",
+                        "Terraform",
+                        "Prometheus",
+                        "Grafana",
+                        "Datadog",
+                        "Linux",
+                        "Jenkins",
+                        "GitLab CI/CD",
+                      ].includes(skill) ? (
+                        <TechnologyIcon
+                          technology={
+                            skill === "GitLab CI/CD"
+                              ? "gitlab"
+                              : (skill.toLowerCase() as "kubernetes")
+                          }
+                          size="compact"
+                        />
+                      ) : null}{" "}
+                      {skill}
+                    </li>
                   ))}
                 </ul>
               </Card>
@@ -76,7 +128,9 @@ export default function Page() {
             {experience.map((item) => (
               <li key={item.company + item.role}>
                 <Card>
-                  <h3>{item.role}</h3>
+                  <h3>
+                    <AppIcon name={item.roleIcon ?? "experience"} /> {item.role}
+                  </h3>
                   <p>{item.company}</p>
                   <p className="pending">Dates and details pending resume verification.</p>
                 </Card>
@@ -89,7 +143,9 @@ export default function Page() {
           <div className="grid">
             {certifications.map((item) => (
               <Card key={item}>
-                <p>{item}</p>
+                <p>
+                  <AppIcon name={item.includes("AWS") ? "cloud" : "certificate"} /> {item}
+                </p>
               </Card>
             ))}
           </div>
@@ -97,7 +153,9 @@ export default function Page() {
           <div className="grid">
             {education.map((item) => (
               <Card key={item}>
-                <p>{item}</p>
+                <p>
+                  <AppIcon name="education" /> {item}
+                </p>
               </Card>
             ))}
           </div>
@@ -107,7 +165,9 @@ export default function Page() {
           <div className="grid">
             {projects.map((project) => (
               <Card key={project.title}>
-                <h3>{project.title}</h3>
+                <h3>
+                  <AppIcon name="projects" /> {project.title}
+                </h3>
                 <p className="pending">Repository details are pending validation.</p>
               </Card>
             ))}
@@ -116,14 +176,21 @@ export default function Page() {
         <AnimatedSection id="contact">
           <SectionHeading>Contact</SectionHeading>
           <p>
+            <AppIcon name="email" />
             Professional contact details and resume download will be published after source
             verification.
           </p>
         </AnimatedSection>
       </main>
       <footer>
-        <p>© {new Date().getFullYear()} Ricardo Horibe · Built with Next.js and TypeScript.</p>
-        <a href="#main">Back to top ↑</a>
+        <p>
+          © {new Date().getFullYear()} Ricardo Horibe · Built with{" "}
+          <TechnologyIcon technology="nextjs" /> Next.js and{" "}
+          <TechnologyIcon technology="typescript" /> TypeScript.
+        </p>
+        <a href="#main">
+          <AppIcon name="home" size="compact" /> Back to top ↑
+        </a>
       </footer>
     </>
   );

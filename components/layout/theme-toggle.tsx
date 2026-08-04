@@ -1,5 +1,6 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
+import { IconButton } from "@/components/icons";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 type Theme = "light" | "dark";
@@ -19,10 +20,9 @@ export function ThemeToggle() {
     window.setTimeout(() => document.documentElement.classList.remove("theme-transition"), 260);
   }
   return (
-    <button
-      className="icon-button"
+    <IconButton
       onClick={toggle}
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+      label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
       aria-pressed={theme === "dark"}
     >
       <motion.span
@@ -31,6 +31,6 @@ export function ThemeToggle() {
       >
         {theme === "dark" ? <Sun aria-hidden /> : <Moon aria-hidden />}
       </motion.span>
-    </button>
+    </IconButton>
   );
 }

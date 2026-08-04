@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { menuVariants } from "@/lib/motion";
 import { navigation } from "@/content/navigation";
 import { ThemeToggle } from "./theme-toggle";
+import { AppIcon } from "@/components/icons";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -50,7 +51,7 @@ export function SiteHeader() {
     if (focus) requestAnimationFrame(() => trigger.current?.focus());
   }
   const links = (mobile = false) =>
-    navigation.map(([label, href]) => (
+    navigation.map(([label, href, icon]) => (
       <a
         key={href}
         href={href}
@@ -58,7 +59,7 @@ export function SiteHeader() {
         className={active === href ? "active" : undefined}
         onClick={() => mobile && closeMenu()}
       >
-        {label}
+        <AppIcon name={icon} size="compact" /> <span>{label}</span>
         {!mobile && active === href && (
           <motion.span layoutId="active-nav" className="active-indicator" />
         )}
@@ -81,7 +82,7 @@ export function SiteHeader() {
         aria-label="Toggle menu"
         onClick={() => (open ? closeMenu(true) : setOpen(true))}
       >
-        {open ? <X /> : <Menu />}
+        {open ? <X aria-hidden /> : <Menu aria-hidden />}
       </button>
       <AnimatePresence>
         {open && (
