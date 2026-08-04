@@ -1,12 +1,18 @@
 import { SiteHeader } from "@/components/layout/site-header";
+import { AnimatedSection } from "@/components/motion/animated-section";
+import { AnimatedText } from "@/components/motion/animated-text";
+import { InteractiveCard } from "@/components/motion/interactive-card";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { StaggerContainer } from "@/components/motion/stagger-container";
+import { InfrastructureNodes } from "@/components/visuals/infrastructure-nodes";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { profile } from "@/content/profile";
 import { expertise } from "@/content/expertise";
 import { experience } from "@/content/experience";
 import { certifications, education } from "@/content/credentials";
 import { projects } from "@/content/projects";
-const Card = ({ children }: { children: React.ReactNode }) => (
-  <article className="card">{children}</article>
+const Card = ({ children, tilt = false }: { children: React.ReactNode; tilt?: boolean }) => (
+  <InteractiveCard tilt={tilt}>{children}</InteractiveCard>
 );
 export default function Page() {
   return (
@@ -17,26 +23,43 @@ export default function Page() {
       <SiteHeader />
       <main id="main" tabIndex={-1}>
         <section className="hero">
-          <p className="eyebrow">Site Reliability Engineering · DevOps</p>
-          <h1>{profile.name}</h1>
-          <p className="headline">{profile.headline}</p>
-          <p>{profile.intro}</p>
-          <a className="button" href="#experience">
-            View experience
-          </a>
+          <div className="hero-copy">
+            <AnimatedText delay={0.02}>
+              <p className="eyebrow">Site Reliability Engineering · DevOps</p>
+            </AnimatedText>
+            <AnimatedText delay={0.08}>
+              <h1>{profile.name}</h1>
+            </AnimatedText>
+            <AnimatedText delay={0.14}>
+              <p className="headline">{profile.headline}</p>
+            </AnimatedText>
+            <AnimatedText delay={0.2}>
+              <p>{profile.intro}</p>
+            </AnimatedText>
+            <AnimatedText delay={0.26}>
+              <p className="status">
+                <span aria-hidden />
+                Building resilient cloud platforms
+              </p>
+              <a className="button" href="#experience">
+                View experience <b aria-hidden>→</b>
+              </a>
+            </AnimatedText>
+          </div>
+          <InfrastructureNodes />
         </section>
-        <section id="about">
+        <AnimatedSection id="about">
           <SectionHeading>About</SectionHeading>
           <p>
             {profile.about} Ricardo focuses on operational excellence, scalability, availability,
             technical leadership, mentoring, and continuous improvement.
           </p>
-        </section>
-        <section id="expertise">
+        </AnimatedSection>
+        <AnimatedSection id="expertise">
           <SectionHeading>Expertise</SectionHeading>
-          <div className="grid">
+          <StaggerContainer className="grid">
             {expertise.map(([title, skills]) => (
-              <Card key={title}>
+              <Card key={title} tilt>
                 <h3>{title}</h3>
                 <ul>
                   {skills.map((skill) => (
@@ -45,11 +68,11 @@ export default function Page() {
                 </ul>
               </Card>
             ))}
-          </div>
-        </section>
-        <section id="experience">
+          </StaggerContainer>
+        </AnimatedSection>
+        <AnimatedSection id="experience">
           <SectionHeading>Professional experience</SectionHeading>
-          <ol className="timeline">
+          <ScrollProgress>
             {experience.map((item) => (
               <li key={item.company + item.role}>
                 <Card>
@@ -59,9 +82,9 @@ export default function Page() {
                 </Card>
               </li>
             ))}
-          </ol>
-        </section>
-        <section id="credentials">
+          </ScrollProgress>
+        </AnimatedSection>
+        <AnimatedSection id="credentials">
           <SectionHeading>Certifications</SectionHeading>
           <div className="grid">
             {certifications.map((item) => (
@@ -78,8 +101,8 @@ export default function Page() {
               </Card>
             ))}
           </div>
-        </section>
-        <section id="projects">
+        </AnimatedSection>
+        <AnimatedSection id="projects">
           <SectionHeading>Projects</SectionHeading>
           <div className="grid">
             {projects.map((project) => (
@@ -89,18 +112,18 @@ export default function Page() {
               </Card>
             ))}
           </div>
-        </section>
-        <section id="contact">
+        </AnimatedSection>
+        <AnimatedSection id="contact">
           <SectionHeading>Contact</SectionHeading>
           <p>
             Professional contact details and resume download will be published after source
             verification.
           </p>
-        </section>
+        </AnimatedSection>
       </main>
       <footer>
         <p>© {new Date().getFullYear()} Ricardo Horibe · Built with Next.js and TypeScript.</p>
-        <a href="#main">Back to top</a>
+        <a href="#main">Back to top ↑</a>
       </footer>
     </>
   );

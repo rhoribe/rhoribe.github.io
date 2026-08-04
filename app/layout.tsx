@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "@/styles/globals.css";
 import { metadataValues } from "@/lib/metadata";
+import { MotionProvider } from "@/components/motion/motion-provider";
 export const metadata: Metadata = {
   title: metadataValues.title,
   description: metadataValues.description,
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="theme" strategy="beforeInteractive">
           {themeScript}
         </Script>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
