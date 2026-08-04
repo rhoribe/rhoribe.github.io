@@ -34,6 +34,7 @@ export type BrandName =
   | "terraform"
   | "docker"
   | "github"
+  | "linkedin"
   | "gitlab"
   | "jenkins"
   | "datadog"
@@ -43,4 +44,5 @@ export type BrandName =
   | "nextjs"
   | "typescript"
   | "tailwind";
-export type TechnologyName = BrandName | "aws" | "rancher" | "cloudwatch" | "elk";
+export type TechnologyName =
+  Exclude<BrandName, "linkedin"> | "aws" | "rancher" | "cloudwatch" | "elk";

@@ -12,7 +12,7 @@ export function ContactAction({
   icon: IconName;
   external?: boolean;
 }) {
-  const brand = icon === "github" ? "github" : icon === "linkedin" ? undefined : undefined;
+  const brand = icon === "github" || icon === "linkedin" ? icon : undefined;
   return (
     <a
       className="contact-action"

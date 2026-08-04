@@ -131,12 +131,12 @@ export default function Page() {
         </AnimatedSection>
       </main>
       <footer>
-        <p>
+        <p className="footer-copy">
           © {new Date().getFullYear()} Ricardo Horibe · Built with{" "}
           <TechnologyIcon technology="nextjs" /> Next.js and{" "}
           <TechnologyIcon technology="typescript" /> TypeScript.
         </p>
-        <a href="#main">
+        <a className="footer-top" href="#main">
           <AppIcon name="home" size="compact" /> Back to top ↑
         </a>
       </footer>

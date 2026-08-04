@@ -8,10 +8,7 @@ export function CertificationSection() {
       {certifications.map((certification) => (
         <Card className="certification" key={certification.name}>
           <IssuerLogo brand={certification.issuerBrand} />
-          <div>
-            <p className="issuer-name">{certification.issuer}</p>
-            <h3>{certification.name}</h3>
-          </div>
+          <h3>{certification.name}</h3>
         </Card>
       ))}
     </div>
