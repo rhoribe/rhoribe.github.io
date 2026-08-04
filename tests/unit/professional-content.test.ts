@@ -29,11 +29,15 @@ describe("approved professional content", () => {
       expect(certification.credentialUrl).toBeUndefined();
     }
   });
-  it("publishes only the approved contact destinations", () => {
+  it("publishes only approved contact destinations", () => {
     expect(contactLinks.map((link) => link.href)).toEqual([
       "mailto:ricardohoribe1@gmail.com",
       "https://github.com/rhoribe",
       "https://www.linkedin.com/in/ricardohoribe",
     ]);
+  });
+  it("maps every public record to a local brand asset or initials fallback", () => {
+    expect(experience.every((company) => company.brand)).toBe(true);
+    expect(certifications.every((certification) => certification.issuerBrand)).toBe(true);
   });
 });

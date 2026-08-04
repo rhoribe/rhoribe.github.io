@@ -17,6 +17,7 @@ const tags = (...labels: string[]): TechnologyTag[] =>
 export const experience: ExperienceCompany[] = [
   {
     company: "Zup Innovation",
+    brand: "zup-innovation",
     employmentType: "Full-time",
     workMode: "remote",
     status: "verified",
@@ -87,7 +88,8 @@ export const experience: ExperienceCompany[] = [
     ],
   },
   {
-    company: "Phi",
+    company: "PHI Pagamentos",
+    brand: "phi-pagamentos",
     employmentType: "Full-time",
     workMode: "remote",
     status: "verified",
@@ -131,6 +133,7 @@ export const experience: ExperienceCompany[] = [
   },
   {
     company: "Digipix",
+    brand: "digipix",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Joinville, Santa Catarina, Brazil",
@@ -169,6 +172,7 @@ export const experience: ExperienceCompany[] = [
   },
   {
     company: "iTFLEX Tecnologia",
+    brand: "itflex-tecnologia",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Joinville, Santa Catarina, Brazil",
@@ -232,6 +236,7 @@ export const experience: ExperienceCompany[] = [
   },
   {
     company: "GSP Loteamentos",
+    brand: "gsp-loteamentos",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Ourinhos, São Paulo, Brazil",

@@ -1,11 +1,12 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { AnimatedSection } from "@/components/motion/animated-section";
 import { AnimatedText } from "@/components/motion/animated-text";
-import { InteractiveCard } from "@/components/motion/interactive-card";
 import { StaggerContainer } from "@/components/motion/stagger-container";
 import { InfrastructureNodes } from "@/components/visuals/infrastructure-nodes";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AppIcon, TechnologyIcon } from "@/components/icons";
+import { Card } from "@/components/ui/card";
+import { ContactAction } from "@/components/ui/contact-action";
 import { ExperienceTimeline } from "@/components/profile/experience-timeline";
 import { CertificationSection } from "@/components/profile/certification-section";
 import { profile } from "@/content/profile";
@@ -13,9 +14,6 @@ import { expertise } from "@/content/expertise";
 import { education } from "@/content/credentials";
 import { contactLinks } from "@/content/contact";
 import { projects } from "@/content/projects";
-const Card = ({ children }: { children: React.ReactNode }) => (
-  <InteractiveCard>{children}</InteractiveCard>
-);
 export default function Page() {
   return (
     <>
@@ -24,13 +22,13 @@ export default function Page() {
       </a>
       <SiteHeader />
       <main id="main" tabIndex={-1}>
-        <section className="hero">
+        <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <AnimatedText delay={0.02}>
               <p className="eyebrow">Site Reliability Engineering · Cloud · DevOps</p>
             </AnimatedText>
             <AnimatedText delay={0.08}>
-              <h1>{profile.name}</h1>
+              <h1 id="hero-title">{profile.name}</h1>
             </AnimatedText>
             <AnimatedText delay={0.14}>
               <p className="headline">{profile.headline}</p>
@@ -50,10 +48,12 @@ export default function Page() {
           </div>
           <InfrastructureNodes />
         </section>
-        <AnimatedSection id="about">
+        <AnimatedSection id="about" className="section-container">
           <SectionHeading>About</SectionHeading>
           {profile.about.map((p) => (
-            <p key={p}>{p}</p>
+            <p className="prose" key={p}>
+              {p}
+            </p>
           ))}
           <h3>Core expertise</h3>
           <StaggerContainer className="grid">
@@ -88,11 +88,11 @@ export default function Page() {
           <h3>Career objective</h3>
           <p>{profile.objective}</p>
         </AnimatedSection>
-        <AnimatedSection id="experience">
+        <AnimatedSection id="experience" className="section-container">
           <SectionHeading>Professional experience</SectionHeading>
           <ExperienceTimeline />
         </AnimatedSection>
-        <AnimatedSection id="credentials">
+        <AnimatedSection id="credentials" className="section-container">
           <SectionHeading>Certifications</SectionHeading>
           <CertificationSection />
           <SectionHeading>Education</SectionHeading>
@@ -106,7 +106,7 @@ export default function Page() {
             ))}
           </div>
         </AnimatedSection>
-        <AnimatedSection id="projects">
+        <AnimatedSection id="projects" className="section-container">
           <SectionHeading>Projects</SectionHeading>
           <div className="grid">
             {projects.map((project) => (
@@ -119,19 +119,12 @@ export default function Page() {
             ))}
           </div>
         </AnimatedSection>
-        <AnimatedSection id="contact">
+        <AnimatedSection id="contact" className="section-container">
           <SectionHeading>Contact</SectionHeading>
-          <ul className="contact-links">
+          <ul className="contact-links" aria-label="Contact methods">
             {contactLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  aria-label={link.label}
-                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                >
-                  <AppIcon name={link.icon} /> {link.label}
-                  {link.external && <AppIcon name="external-link" size="compact" />}
-                </a>
+                <ContactAction {...link} />
               </li>
             ))}
           </ul>

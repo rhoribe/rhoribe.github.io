@@ -1,5 +1,8 @@
 import { AppIcon } from "@/components/icons";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { Accordion } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { CompanyLogo } from "@/components/ui/company-logo";
 import { experience } from "@/content/experience";
 import { formatRange } from "@/lib/dates";
 export function ExperienceTimeline() {
@@ -8,13 +11,14 @@ export function ExperienceTimeline() {
       {experience.map((company) => (
         <li key={company.company}>
           <article className="card company-card">
-            <h3>
-              <AppIcon name="experience" /> {company.company}
-            </h3>
+            <header className="company-heading">
+              <CompanyLogo brand={company.brand} />
+              <h3>{company.company}</h3>
+            </header>
             {company.roles.map((role) => (
               <section className="role" key={role.role}>
                 <h4>
-                  <AppIcon name={role.roleIcon} /> {role.role}
+                  <AppIcon name={role.roleIcon} size="compact" /> {role.role}
                 </h4>
                 <p className="metadata">
                   <AppIcon name="calendar" size="compact" />
@@ -32,8 +36,7 @@ export function ExperienceTimeline() {
                 </p>
                 <p>{role.summary}</p>
                 <p className="highlight">{role.highlight}</p>
-                <details>
-                  <summary>Show details</summary>
+                <Accordion summary="View responsibilities">
                   <h5>Responsibilities</h5>
                   <ul>
                     {role.responsibilities.map((item) => (
@@ -43,13 +46,13 @@ export function ExperienceTimeline() {
                   <h5>Technologies</h5>
                   <ul className="badges">
                     {role.technologies.map((tag) => (
-                      <li key={tag.label}>
+                      <Badge key={tag.label}>
                         <AppIcon name={tag.icon} size="compact" />
                         {tag.label}
-                      </li>
+                      </Badge>
                     ))}
                   </ul>
-                </details>
+                </Accordion>
               </section>
             ))}
           </article>

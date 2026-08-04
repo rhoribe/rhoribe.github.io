@@ -1,4 +1,5 @@
 import type { IconName } from "@/types/icon";
+import type { BrandId } from "@/config/brand-assets";
 export type CertificationStatus = "active" | "expired" | "no-expiration-provided";
 export type CertificationCategory =
   | "artificial-intelligence"
@@ -15,6 +16,7 @@ export type CertificationCategory =
 export type Certification = {
   name: string;
   issuer: string;
+  issuerBrand: BrandId;
   issuedDate: string;
   expirationDate?: string;
   status: CertificationStatus;

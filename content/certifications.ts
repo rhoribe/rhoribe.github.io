@@ -10,6 +10,7 @@ const c = (
   ({
     name,
     issuer,
+    issuerBrand: issuerBrand(issuer),
     issuedDate,
     status,
     categories,
@@ -17,6 +18,30 @@ const c = (
     displayOrder: 0,
     ...extra,
   }) satisfies Certification;
+const issuerBrand = (issuer: string): Certification["issuerBrand"] => {
+  if (issuer === "Amazon Web Services") return "aws";
+  if (issuer === "Microsoft") return "microsoft";
+  if (issuer === "Linux Professional Institute") return "lpi";
+  if (issuer.includes("VMEdu")) return "vmedu";
+  const ids = [
+    "Anthropic",
+    "HashiCorp",
+    "GitLab",
+    "Rancher",
+    "DefensityOne",
+    "Scrum.org",
+    "Digium",
+    "EXIN",
+    "SUSE",
+    "ISACA",
+    "PeopleCert",
+    "Novell",
+  ] as const;
+  const match = ids.find((value) => value === issuer);
+  return (
+    match ? match.toLowerCase().replace(".", "-") : "defensityone"
+  ) as Certification["issuerBrand"];
+};
 export const certifications: Certification[] = [
   c(
     "Certificate of Completion: Claude Code 101",
