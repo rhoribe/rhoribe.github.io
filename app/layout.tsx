@@ -3,6 +3,15 @@ import Script from "next/script";
 import "@/styles/globals.css";
 import { metadataValues } from "@/lib/metadata";
 import { MotionProvider } from "@/components/motion/motion-provider";
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ricardo Horibe",
+  jobTitle: "Site Reliability Engineer (SRE) – Specialist",
+  email: "ricardohoribe1@gmail.com",
+  sameAs: ["https://github.com/rhoribe", "https://www.linkedin.com/in/ricardohoribe"],
+  knowsAbout: ["AWS", "Kubernetes", "Terraform", "DevOps", "Cloud", "Observability"],
+};
 export const metadata: Metadata = {
   title: metadataValues.title,
   description: metadataValues.description,
@@ -23,6 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="theme" strategy="beforeInteractive">
           {themeScript}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

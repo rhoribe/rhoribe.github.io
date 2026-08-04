@@ -2,18 +2,19 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { AnimatedSection } from "@/components/motion/animated-section";
 import { AnimatedText } from "@/components/motion/animated-text";
 import { InteractiveCard } from "@/components/motion/interactive-card";
-import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { StaggerContainer } from "@/components/motion/stagger-container";
 import { InfrastructureNodes } from "@/components/visuals/infrastructure-nodes";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { AppIcon, IconBadge, TechnologyIcon } from "@/components/icons";
+import { AppIcon, TechnologyIcon } from "@/components/icons";
+import { ExperienceTimeline } from "@/components/profile/experience-timeline";
+import { CertificationSection } from "@/components/profile/certification-section";
 import { profile } from "@/content/profile";
 import { expertise } from "@/content/expertise";
-import { experience } from "@/content/experience";
-import { certifications, education } from "@/content/credentials";
+import { education } from "@/content/credentials";
+import { contactLinks } from "@/content/contact";
 import { projects } from "@/content/projects";
-const Card = ({ children, tilt = false }: { children: React.ReactNode; tilt?: boolean }) => (
-  <InteractiveCard tilt={tilt}>{children}</InteractiveCard>
+const Card = ({ children }: { children: React.ReactNode }) => (
+  <InteractiveCard>{children}</InteractiveCard>
 );
 export default function Page() {
   return (
@@ -26,7 +27,7 @@ export default function Page() {
         <section className="hero">
           <div className="hero-copy">
             <AnimatedText delay={0.02}>
-              <p className="eyebrow">Site Reliability Engineering · DevOps</p>
+              <p className="eyebrow">Site Reliability Engineering · Cloud · DevOps</p>
             </AnimatedText>
             <AnimatedText delay={0.08}>
               <h1>{profile.name}</h1>
@@ -36,11 +37,11 @@ export default function Page() {
             </AnimatedText>
             <AnimatedText delay={0.2}>
               <p>{profile.intro}</p>
+              <p>{profile.technologyLine}</p>
             </AnimatedText>
             <AnimatedText delay={0.26}>
               <p className="status">
-                <span aria-hidden /> <AppIcon name="reliability" size="compact" />
-                Building resilient cloud platforms
+                <AppIcon name="reliability" size="compact" /> More than 15 years in technology
               </p>
               <a className="button" href="#experience">
                 <AppIcon name="experience" size="compact" /> View experience <b aria-hidden>→</b>
@@ -51,31 +52,14 @@ export default function Page() {
         </section>
         <AnimatedSection id="about">
           <SectionHeading>About</SectionHeading>
-          <p>
-            {profile.about} Ricardo focuses on operational excellence, scalability, availability,
-            technical leadership, mentoring, and continuous improvement.
-          </p>
-          <div className="icon-row" aria-label="Professional highlights">
-            <IconBadge>
-              <AppIcon name="experience" />
-            </IconBadge>
-            <IconBadge>
-              <AppIcon name="leadership" />
-            </IconBadge>
-            <IconBadge>
-              <AppIcon name="reliability" />
-            </IconBadge>
-            <IconBadge>
-              <AppIcon name="automation" />
-            </IconBadge>
-          </div>
-        </AnimatedSection>
-        <AnimatedSection id="expertise">
-          <SectionHeading>Expertise</SectionHeading>
+          {profile.about.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+          <h3>Core expertise</h3>
           <StaggerContainer className="grid">
             {expertise.map(([title, skills]) => (
-              <Card key={title} tilt>
-                <h3>
+              <Card key={title}>
+                <h4>
                   <AppIcon
                     name={
                       title.includes("Cloud")
@@ -90,65 +74,27 @@ export default function Page() {
                     }
                   />{" "}
                   {title}
-                </h3>
+                </h4>
                 <ul>
                   {skills.map((skill) => (
-                    <li key={skill}>
-                      {[
-                        "Kubernetes",
-                        "Docker",
-                        "Terraform",
-                        "Prometheus",
-                        "Grafana",
-                        "Datadog",
-                        "Linux",
-                        "Jenkins",
-                        "GitLab CI/CD",
-                      ].includes(skill) ? (
-                        <TechnologyIcon
-                          technology={
-                            skill === "GitLab CI/CD"
-                              ? "gitlab"
-                              : (skill.toLowerCase() as "kubernetes")
-                          }
-                          size="compact"
-                        />
-                      ) : null}{" "}
-                      {skill}
-                    </li>
+                    <li key={skill}>{skill}</li>
                   ))}
                 </ul>
               </Card>
             ))}
           </StaggerContainer>
+          <h3>Leadership</h3>
+          <p>{profile.leadership}</p>
+          <h3>Career objective</h3>
+          <p>{profile.objective}</p>
         </AnimatedSection>
         <AnimatedSection id="experience">
           <SectionHeading>Professional experience</SectionHeading>
-          <ScrollProgress>
-            {experience.map((item) => (
-              <li key={item.company + item.role}>
-                <Card>
-                  <h3>
-                    <AppIcon name={item.roleIcon ?? "experience"} /> {item.role}
-                  </h3>
-                  <p>{item.company}</p>
-                  <p className="pending">Dates and details pending resume verification.</p>
-                </Card>
-              </li>
-            ))}
-          </ScrollProgress>
+          <ExperienceTimeline />
         </AnimatedSection>
         <AnimatedSection id="credentials">
           <SectionHeading>Certifications</SectionHeading>
-          <div className="grid">
-            {certifications.map((item) => (
-              <Card key={item}>
-                <p>
-                  <AppIcon name={item.includes("AWS") ? "cloud" : "certificate"} /> {item}
-                </p>
-              </Card>
-            ))}
-          </div>
+          <CertificationSection />
           <SectionHeading>Education</SectionHeading>
           <div className="grid">
             {education.map((item) => (
@@ -175,11 +121,20 @@ export default function Page() {
         </AnimatedSection>
         <AnimatedSection id="contact">
           <SectionHeading>Contact</SectionHeading>
-          <p>
-            <AppIcon name="email" />
-            Professional contact details and resume download will be published after source
-            verification.
-          </p>
+          <ul className="contact-links">
+            {contactLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  aria-label={link.label}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  <AppIcon name={link.icon} /> {link.label}
+                  {link.external && <AppIcon name="external-link" size="compact" />}
+                </a>
+              </li>
+            ))}
+          </ul>
         </AnimatedSection>
       </main>
       <footer>

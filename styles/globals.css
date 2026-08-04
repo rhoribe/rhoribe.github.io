@@ -388,6 +388,85 @@ section {
   left: -1.48rem;
   top: 1.5rem;
 }
+.company-card {
+  display: grid;
+  gap: 1rem;
+}
+.role {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  min-width: 0;
+}
+.role h4,
+.role h5 {
+  margin: 0.25rem 0;
+}
+.metadata {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.highlight {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+}
+details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 700;
+}
+details ul {
+  padding-left: 1.2rem;
+}
+.badges,
+.contact-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+}
+.badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  overflow-wrap: anywhere;
+}
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.filters legend {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.filters label {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+}
+.filters input {
+  accent-color: var(--accent);
+}
+.credential-id {
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 footer {
   border-top: 1px solid var(--line);
   display: flex;
