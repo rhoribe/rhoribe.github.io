@@ -1,0 +1,9 @@
+node_modules
+.agents
+.specify
+specs
+.next
+out
+coverage
+playwright-report
+package-lock.json
