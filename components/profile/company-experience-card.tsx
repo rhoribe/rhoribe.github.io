@@ -1,6 +1,5 @@
-import { AppIcon } from "@/components/icons";
+import { AppIcon, BriefcaseIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
-import { CompanyLogo } from "@/components/ui/company-logo";
 import { ExperienceAccordion } from "./experience-accordion";
 import { formatRange } from "@/lib/dates";
 import type { ExperienceCompany } from "@/types/experience";
@@ -9,7 +8,7 @@ export function CompanyExperienceCard({ company }: { company: ExperienceCompany 
   return (
     <article className="card company-card" data-company-card={company.id}>
       <header className="company-heading">
-        <CompanyLogo brand={company.brand} />
+        <BriefcaseIcon label={`${company.company} experience`} />
         <h3>{company.company}</h3>
       </header>
       {company.roles.map((role) => (
@@ -18,15 +17,17 @@ export function CompanyExperienceCard({ company }: { company: ExperienceCompany 
             <AppIcon name={role.roleIcon} size="compact" /> {role.role}
           </h4>
           <p className="metadata">
-            <AppIcon name="calendar" size="compact" />
+            <AppIcon name="calendar" size="compact" className="metadata-icon" />
             <time dateTime={role.startDate}>
               {formatRange(role.startDate, role.endDate, role.currentRole)}
             </time>{" "}
-            · {company.employmentType} · {company.workMode}
+            · {company.employmentType} ·{" "}
+            <AppIcon name="networking" size="compact" className="metadata-icon" />
+            {company.workMode}
             {company.location && (
               <>
                 {" "}
-                · <AppIcon name="location" size="compact" />
+                · <AppIcon name="location" size="compact" className="metadata-icon" />
                 {company.location}
               </>
             )}

@@ -20,7 +20,7 @@ export function Logo({ brand, className = "" }: { brand: BrandId; className?: st
           onError={() => setFailed(true)}
         />
       ) : (
-        <span className="logo-fallback" aria-hidden="true">
+        <span className="logo-fallback issuer-monogram" aria-hidden="true">
           {asset.fallbackInitials}
         </span>
       )}

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("experience disclosure is keyboard accessible with reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  const summary = page.getByRole("button", { name: "View responsibilities" }).first();
+  const summary = page.locator(".accordion-trigger").first();
   await summary.focus();
   await expect(summary).toBeFocused();
   await summary.press("Enter");
@@ -21,9 +21,9 @@ test("every interactive control has visible focus styling", async ({ page }) => 
   await expect(control).toHaveCSS("outline-style", "solid");
 });
 
-test("theme switch retains visible, labelled contact actions", async ({ page }) => {
+test("dark-only header retains visible, labelled contact actions", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /Switch to/ }).click();
+  await expect(page.getByRole("button", { name: /Switch to/ })).toHaveCount(0);
   await expect(page.getByLabel("GitHub")).toBeVisible();
   await expect(page.getByLabel("LinkedIn")).toBeVisible();
   await expect(page.getByLabel("Email")).toBeVisible();

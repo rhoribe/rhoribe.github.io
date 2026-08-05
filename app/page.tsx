@@ -58,34 +58,23 @@ export default function Page() {
               {p}
             </p>
           ))}
-          <h3>Core expertise</h3>
-          <StaggerContainer className="grid">
-            {expertise.map(([title, skills]) => (
-              <Card key={title}>
-                <h4>
-                  <AppIcon
-                    name={
-                      title.includes("Cloud")
-                        ? "cloud"
-                        : title.includes("Containers")
-                          ? "containers"
-                          : title.includes("Observability")
-                            ? "observability"
-                            : title.includes("CI")
-                              ? "cicd"
-                              : "reliability"
-                    }
-                  />{" "}
-                  {title}
-                </h4>
-                <ul>
-                  {skills.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </StaggerContainer>
+          <section id="expertise" className="expertise-section" aria-labelledby="expertise-title">
+            <h3 id="expertise-title">Core expertise</h3>
+            <StaggerContainer className="grid">
+              {expertise.map(({ id, title, skills, icon }) => (
+                <Card key={id}>
+                  <h4>
+                    <AppIcon name={icon} /> {title}
+                  </h4>
+                  <ul>
+                    {skills.map((skill) => (
+                      <li key={skill}>{skill}</li>
+                    ))}
+                  </ul>
+                </Card>
+              ))}
+            </StaggerContainer>
+          </section>
           <h3>Leadership</h3>
           <p>{profile.leadership}</p>
           <h3>Career objective</h3>

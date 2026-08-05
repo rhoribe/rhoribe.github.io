@@ -4,7 +4,7 @@ import type { Certification } from "@/types/certification";
 
 export function CertificationCard({ certification }: { certification: Certification }) {
   return (
-    <Card className="certification">
+    <Card className="certification" data-certification-card>
       <IssuerLogo brand={certification.issuerBrand} />
       <div>
         <p className="issuer-name">{certification.issuer}</p>

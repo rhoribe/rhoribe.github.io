@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { menuVariants } from "@/lib/motion";
 import { navigation } from "@/content/navigation";
-import { ThemeToggle } from "./theme-toggle";
 import { AppIcon } from "@/components/icons";
 
 export function SiteHeader() {
@@ -73,7 +72,6 @@ export function SiteHeader() {
       <nav className="desktop-nav" aria-label="Primary">
         {links()}
       </nav>
-      <ThemeToggle />
       <button
         ref={trigger}
         className="menu-button"

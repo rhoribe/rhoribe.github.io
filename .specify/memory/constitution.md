@@ -17,8 +17,8 @@ Sync Impact Report
 ### I. Mobile-First Responsive Design
 Every page and component MUST function from 320px-wide mobile screens through large desktop monitors. Layouts MUST avoid unintended horizontal scrolling, and navigation, typography, cards, timelines, buttons, and grids MUST adapt to their available viewport. This protects the primary visitor experience and keeps content usable regardless of device.
 
-### II. Dark and Light Themes
-The site MUST support accessible dark and light themes. On a first visit it MUST detect the operating-system preference; when no prior preference exists, dark mode is the fallback default. Users MUST be able to select either theme, and the selection MUST persist in local storage. Both themes MUST satisfy applicable contrast requirements.
+### II. Refined Dark Theme
+The site MUST present one accessible refined dark theme. It MUST NOT expose a light-theme state, theme-selection control, or persisted theme preference. The permanent dark palette MUST satisfy applicable contrast requirements.
 
 ### III. Accessible by Default
 The portfolio MUST meet WCAG 2.1 AA principles through semantic HTML, full keyboard navigation, visible focus indicators, and meaningful alternative text for relevant images. It MUST respect `prefers-reduced-motion` and MUST NOT communicate information through color alone. Accessibility is a baseline quality requirement, not a later enhancement.
@@ -46,7 +46,7 @@ Critical components and utilities MUST have automated tests where they add meani
 
 ## Portfolio Constraints
 
-The initial portfolio is a static GitHub Pages site. Any feature specification MUST identify the resume evidence for proposed professional content and flag unverified content for confirmation. Specifications and plans MUST include mobile-responsive, dual-theme, accessibility, performance, privacy, SEO, and deployment implications whenever the feature can affect them. No new backend, authentication flow, or collection of visitor data is permitted without a constitution amendment.
+The initial portfolio is a static GitHub Pages site. Any feature specification MUST identify the resume evidence for proposed professional content and flag unverified content for confirmation. Specifications and plans MUST include mobile-responsive, permanent-dark-theme, accessibility, performance, privacy, SEO, and deployment implications whenever the feature can affect them. No new backend, authentication flow, or collection of visitor data is permitted without a constitution amendment.
 
 ## Quality Gates & Delivery Workflow
 
@@ -58,4 +58,4 @@ This constitution supersedes conflicting project practices, feature specificatio
 
 Amendments require a documented proposal that states the affected principles, rationale, migration impact, and validation changes. The project owner must approve an amendment before implementation. Use semantic versioning for governance: MAJOR for incompatible principle removals or redefinitions, MINOR for new principles or material expansion, and PATCH for clarifications that do not change obligations. Ratification date remains the original adoption date; last-amended date changes for every approved update. Compliance is reviewed during specification, planning, code review, and pre-deployment validation.
 
-**Version**: 1.0.0 | **Ratified**: 2026-08-03 | **Last Amended**: 2026-08-03
+**Version**: 2.0.0 | **Ratified**: 2026-08-03 | **Last Amended**: 2026-08-04

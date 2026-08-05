@@ -23,3 +23,29 @@ test("timeline visual regression with all panels expanded", async ({ page }) => 
   for (let index = 0; index < 8; index += 1) await controls.first().click();
   await expect(page.locator("#experience")).toHaveScreenshot("experience-all-open.png");
 });
+
+test("timeline reveals cards and keeps one matching active marker", async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await page.goto("/");
+  const cards = page.locator("[data-company-card]");
+  await cards.nth(2).evaluate((card) =>
+    window.scrollTo({
+      top: card.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2,
+    }),
+  );
+  await expect(page.locator(".timeline-row[data-revealed]")).not.toHaveCount(0);
+  await expect(page.locator(".timeline-row[data-active]")).toHaveCount(1);
+  const active = page.locator(".timeline-row[data-active]");
+  await expect(active.locator("[data-timeline-marker]")).toHaveCount(1);
+  await expect(active.locator("[data-timeline-rail]")).toHaveCount(1);
+});
+
+test("reduced motion keeps every experience card immediately readable", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.locator("[data-company-card]")).toHaveCount(5);
+  for (const card of await page.locator("[data-company-card]").all()) {
+    await expect(card).toBeVisible();
+    await expect(card).toHaveCSS("opacity", "1");
+  }
+});

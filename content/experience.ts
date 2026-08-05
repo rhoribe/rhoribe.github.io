@@ -18,7 +18,6 @@ export const experience: ExperienceCompany[] = [
   {
     id: "zup-innovation",
     company: "Zup Innovation",
-    brand: "zup-innovation",
     employmentType: "Full-time",
     workMode: "remote",
     status: "verified",
@@ -93,7 +92,6 @@ export const experience: ExperienceCompany[] = [
   {
     id: "phi-pagamentos",
     company: "PHI Pagamentos",
-    brand: "phi-pagamentos",
     employmentType: "Full-time",
     workMode: "remote",
     status: "verified",
@@ -139,7 +137,6 @@ export const experience: ExperienceCompany[] = [
   {
     id: "digipix",
     company: "Digipix",
-    brand: "digipix",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Joinville, Santa Catarina, Brazil",
@@ -180,7 +177,6 @@ export const experience: ExperienceCompany[] = [
   {
     id: "itflex-tecnologia",
     company: "iTFLEX Tecnologia",
-    brand: "itflex-tecnologia",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Joinville, Santa Catarina, Brazil",
@@ -247,7 +243,6 @@ export const experience: ExperienceCompany[] = [
   {
     id: "gsp-loteamentos",
     company: "GSP Loteamentos",
-    brand: "gsp-loteamentos",
     employmentType: "Full-time",
     workMode: "on-site",
     location: "Ourinhos, São Paulo, Brazil",

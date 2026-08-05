@@ -4,27 +4,6 @@ const fallback = (id: string, kind: BrandAsset["kind"], displayName: string, ini
   ({ id, kind, displayName, fallbackInitials: initials, status: "fallback" }) satisfies BrandAsset;
 
 export const brandAssets = [
-  {
-    id: "zup-innovation",
-    kind: "company",
-    displayName: "Zup Innovation",
-    fallbackInitials: "ZU",
-    status: "approved",
-    localPath: "/assets/brands/companies/zup-innovation.svg",
-    sourceUrl: "https://zup.com.br/wp-content/uploads/2026/03/ZUP_Logotipo_SemTagline-2.svg",
-  },
-  fallback("phi-pagamentos", "company", "PHI Pagamentos", "PHI"),
-  {
-    id: "digipix",
-    kind: "company",
-    displayName: "Digipix",
-    fallbackInitials: "DG",
-    status: "approved",
-    localPath: "/assets/brands/companies/digipix.svg",
-    sourceUrl: "https://www.digipix.com.br/img/assets/header/logo-digipix.svg",
-  },
-  fallback("itflex-tecnologia", "company", "iTFLEX Tecnologia", "IT"),
-  fallback("gsp-loteamentos", "company", "GSP Loteamentos", "GS"),
   fallback("aws", "issuer", "Amazon Web Services", "AWS"),
   fallback("microsoft", "issuer", "Microsoft", "MS"),
   {

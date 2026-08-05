@@ -1,5 +1,5 @@
 export type BrandAssetStatus = "approved" | "fallback";
-export type BrandAssetKind = "company" | "issuer";
+export type BrandAssetKind = "issuer";
 
 export type BrandAsset = {
   id: string;

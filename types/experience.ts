@@ -1,5 +1,4 @@
 import type { IconName } from "@/types/icon";
-import type { BrandId } from "@/config/brand-assets";
 
 export type WorkMode = "remote" | "hybrid" | "on-site";
 export type TechnologyTag = { label: string; icon: IconName };
@@ -18,7 +17,6 @@ export type ExperienceRole = {
 export type ExperienceCompany = {
   id: string;
   company: string;
-  brand: BrandId;
   employmentType: string;
   workMode: WorkMode;
   location?: string;

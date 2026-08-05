@@ -36,8 +36,8 @@ describe("approved professional content", () => {
       "https://www.linkedin.com/in/ricardohoribe",
     ]);
   });
-  it("maps every public record to a local brand asset or initials fallback", () => {
-    expect(experience.every((company) => company.brand)).toBe(true);
+  it("keeps company identity textual and maps certification issuers to an asset treatment", () => {
+    expect(experience.every((company) => company.company.trim())).toBe(true);
     expect(certifications.every((certification) => certification.issuerBrand)).toBe(true);
   });
 });
