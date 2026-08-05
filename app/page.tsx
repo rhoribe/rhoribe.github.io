@@ -13,7 +13,7 @@ import { profile } from "@/content/profile";
 import { expertise } from "@/content/expertise";
 import { education } from "@/content/credentials";
 import { contactLinks } from "@/content/contact";
-import { projects } from "@/content/projects";
+import { publishableProjects } from "@/content/projects";
 export default function Page() {
   return (
     <>
@@ -43,6 +43,9 @@ export default function Page() {
               </p>
               <a className="button" href="#experience">
                 <AppIcon name="experience" size="compact" /> View experience <b aria-hidden>→</b>
+              </a>
+              <a className="hero-contact" href="#contact">
+                Start a conversation <span aria-hidden>→</span>
               </a>
             </AnimatedText>
           </div>
@@ -106,19 +109,20 @@ export default function Page() {
             ))}
           </div>
         </AnimatedSection>
-        <AnimatedSection id="projects" className="section-container">
-          <SectionHeading>Projects</SectionHeading>
-          <div className="grid">
-            {projects.map((project) => (
-              <Card key={project.title}>
-                <h3>
-                  <AppIcon name="projects" /> {project.title}
-                </h3>
-                <p className="pending">Repository details are pending validation.</p>
-              </Card>
-            ))}
-          </div>
-        </AnimatedSection>
+        {publishableProjects.length > 0 && (
+          <AnimatedSection id="projects" className="section-container">
+            <SectionHeading>Projects</SectionHeading>
+            <div className="grid">
+              {publishableProjects.map((project) => (
+                <Card key={project.title}>
+                  <h3>
+                    <AppIcon name="projects" /> {project.title}
+                  </h3>
+                </Card>
+              ))}
+            </div>
+          </AnimatedSection>
+        )}
         <AnimatedSection id="contact" className="section-container">
           <SectionHeading>Contact</SectionHeading>
           <ul className="contact-links" aria-label="Contact methods">
@@ -133,8 +137,14 @@ export default function Page() {
       <footer>
         <p className="footer-copy">
           © {new Date().getFullYear()} Ricardo Horibe · Built with{" "}
-          <TechnologyIcon technology="nextjs" /> Next.js and{" "}
-          <TechnologyIcon technology="typescript" /> TypeScript.
+          <span className="technology-group">
+            <TechnologyIcon technology="nextjs" /> Next.js
+          </span>{" "}
+          and{" "}
+          <span className="technology-group">
+            <TechnologyIcon technology="typescript" /> TypeScript
+          </span>
+          .
         </p>
         <a className="footer-top" href="#main">
           <AppIcon name="home" size="compact" /> Back to top ↑

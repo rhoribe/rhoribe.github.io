@@ -16,6 +16,7 @@ const tags = (...labels: string[]): TechnologyTag[] =>
   }));
 export const experience: ExperienceCompany[] = [
   {
+    id: "zup-innovation",
     company: "Zup Innovation",
     brand: "zup-innovation",
     employmentType: "Full-time",
@@ -23,6 +24,7 @@ export const experience: ExperienceCompany[] = [
     status: "verified",
     roles: [
       {
+        id: "zup-sre-specialist",
         role: "Site Reliability Engineer (SRE) – Specialist",
         startDate: "2025-07",
         currentRole: true,
@@ -54,6 +56,7 @@ export const experience: ExperienceCompany[] = [
         roleIcon: "reliability",
       },
       {
+        id: "zup-sre",
         role: "Site Reliability Engineer (SRE)",
         startDate: "2021-09",
         endDate: "2025-07",
@@ -88,6 +91,7 @@ export const experience: ExperienceCompany[] = [
     ],
   },
   {
+    id: "phi-pagamentos",
     company: "PHI Pagamentos",
     brand: "phi-pagamentos",
     employmentType: "Full-time",
@@ -95,6 +99,7 @@ export const experience: ExperienceCompany[] = [
     status: "verified",
     roles: [
       {
+        id: "phi-sre-devops",
         role: "SRE / DevOps Engineer",
         startDate: "2020-11",
         endDate: "2021-07",
@@ -132,6 +137,7 @@ export const experience: ExperienceCompany[] = [
     ],
   },
   {
+    id: "digipix",
     company: "Digipix",
     brand: "digipix",
     employmentType: "Full-time",
@@ -140,6 +146,7 @@ export const experience: ExperienceCompany[] = [
     status: "verified",
     roles: [
       {
+        id: "digipix-infrastructure-coordinator",
         role: "Infrastructure Coordinator",
         startDate: "2018-04",
         endDate: "2020-11",
@@ -171,6 +178,7 @@ export const experience: ExperienceCompany[] = [
     ],
   },
   {
+    id: "itflex-tecnologia",
     company: "iTFLEX Tecnologia",
     brand: "itflex-tecnologia",
     employmentType: "Full-time",
@@ -179,6 +187,7 @@ export const experience: ExperienceCompany[] = [
     status: "verified",
     roles: [
       {
+        id: "itflex-project-lead",
         role: "Project Lead",
         startDate: "2015-06",
         endDate: "2018-04",
@@ -207,6 +216,7 @@ export const experience: ExperienceCompany[] = [
         roleIcon: "leadership",
       },
       {
+        id: "itflex-support-analyst",
         role: "IT Support Analyst",
         startDate: "2014-02",
         endDate: "2015-06",
@@ -235,6 +245,7 @@ export const experience: ExperienceCompany[] = [
     ],
   },
   {
+    id: "gsp-loteamentos",
     company: "GSP Loteamentos",
     brand: "gsp-loteamentos",
     employmentType: "Full-time",
@@ -243,6 +254,7 @@ export const experience: ExperienceCompany[] = [
     status: "verified",
     roles: [
       {
+        id: "gsp-infrastructure-coordinator",
         role: "IT Infrastructure Coordinator",
         startDate: "2012-04",
         endDate: "2013-03",
@@ -275,6 +287,7 @@ export const experience: ExperienceCompany[] = [
         roleIcon: "infrastructure",
       },
       {
+        id: "gsp-support-analyst",
         role: "IT Support Analyst",
         startDate: "2011-01",
         endDate: "2012-06",
