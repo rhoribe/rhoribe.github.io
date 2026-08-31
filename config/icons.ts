@@ -1,40 +1,54 @@
-import type { IconNode, LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   Activity,
   Award,
   Blocks,
   BriefcaseBusiness,
   CalendarDays,
+  CheckCircle2,
   Cloud,
+  Cpu,
   Database,
   Download,
   ExternalLink,
   FolderGit2,
-  Gauge,
   GraduationCap,
   House,
+  Layers,
   Mail,
   MapPin,
   Network,
   Package,
+  Server,
   Shield,
   ShieldCheck,
+  Sparkles,
   Users,
   UserRound,
   Wrench,
+  Zap,
 } from "lucide-react";
 import type { BrandName, IconName, IconSize } from "@/types/icon";
 import {
+  siAnsible,
+  siAnthropic,
+  siApple,
   siDatadog,
+  siDigitalocean,
   siDocker,
+  siElasticstack,
   siGithub,
   siGitlab,
   siGrafana,
+  siHashicorp,
+  siHelm,
   siJenkins,
   siKubernetes,
   siLinux,
   siNextdotjs,
   siPrometheus,
+  siPuppet,
+  siRancher,
   siTailwindcss,
   siTerraform,
   siTypescript,
@@ -46,11 +60,12 @@ export const iconSizes: Record<IconSize, number> = {
   action: 20,
   hero: 22,
 };
+
 export const appIcons: Record<IconName, LucideIcon> = {
   home: House,
   about: UserRound,
   experience: BriefcaseBusiness,
-  skills: Wrench,
+  skills: Cpu,
   certifications: Award,
   education: GraduationCap,
   projects: FolderGit2,
@@ -58,12 +73,12 @@ export const appIcons: Record<IconName, LucideIcon> = {
   cloud: Cloud,
   observability: Activity,
   cicd: Blocks,
-  automation: Wrench,
+  automation: Zap,
   networking: Network,
   security: ShieldCheck,
-  reliability: Shield,
-  resilience: ShieldCheck,
-  infrastructure: Database,
+  reliability: ShieldCheck,
+  resilience: Shield,
+  infrastructure: Server,
   database: Database,
   leadership: Users,
   download: Download,
@@ -76,77 +91,24 @@ export const appIcons: Record<IconName, LucideIcon> = {
   certificate: Award,
   containers: Package,
 };
+
 export type BrandDefinition = { title: string; path: string; hex: string };
+
 export const brands: Partial<Record<BrandName, BrandDefinition>> = {
-  kubernetes: {
-    title: "Kubernetes",
-    path: "M13.2 3.2 20.3 7v8L13.2 19 6 15V7l7.2-3.8Zm0 3.1a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z",
-    hex: "326CE5",
+  aws: {
+    title: "Amazon Web Services",
+    path: "M18.8 17.5c-2.4 1.8-5.6 2.8-8.8 2.8-4.5 0-8.6-1.7-11.8-4.5-.3-.2-.3-.6 0-.8.3-.3.7-.3 1 0 2.9 2.6 6.7 4.1 10.8 4.1 2.9 0 5.8-.9 8-2.5.4-.3.9 0 .8.4zm2.2-1.4c-.3-.4-1.9-.2-2.9-.1-.3 0-.4-.3-.2-.5 1.3-1 3.5-.7 3.8-.4.3.3.1 2.5-.9 3.7-.2.2-.5.1-.5-.2 0-.9.7-2.1.7-2.5zm-8.8-13.8c-3.3 0-6 2.7-6 6 0 1.5.5 2.8 1.4 3.9l.9-.8c-.6-.9-1-2-1-3.1 0-2.6 2.1-4.7 4.7-4.7s4.7 2.1 4.7 4.7c0 1.1-.4 2.2-1 3.1l.9.8c.9-1.1 1.4-2.4 1.4-3.9 0-3.3-2.7-6-6-6z",
+    hex: "FF9900",
   },
-  terraform: {
-    title: "Terraform",
-    path: "M1 2v7l6 3.5V5.5L1 2Zm6.8 3.5V12l6 3.5V9L7.8 5.5ZM14.7 9v6.5l6-3.5V5.5l-6 3.5Z",
-    hex: "7B42BC",
+  azure: {
+    title: "Microsoft Azure",
+    path: "M13.05 4.24l-6.19 11.2h4.52l4.82-8.72 5.8 8.72H24l-8.58-12.87a1.44 1.44 0 0 0-2.37 1.67zM1.9 16.71a1.43 1.43 0 0 0 .28 1.93 1.41 1.41 0 0 0 1.13.29h12.52l-2.82-3.87H4.37l4.31-7.79-3.9 6.94a1.43 1.43 0 0 0-.88 2.5z",
+    hex: "0078D4",
   },
-  docker: {
-    title: "Docker",
-    path: "M2 10h3V7H2v3Zm4 0h3V7H6v3Zm4 0h3V7h-3v3Zm4 0h3V7h-3v3Zm-8-4h3V3H6v3Zm4 0h3V3h-3v3Zm4 0h3V3h-3v3Zm-9 5H0v2h1c.7 3 3.2 5 6.2 5 4 0 6.6-2.7 7.5-5.8.8.1 2.2.1 3.4-1.1.4-.4.8-1.1.9-1.7-1.1-.2-2.5.2-3.3 1.1-.5-.5-1.3-.8-2.1-.8H1v2Z",
-    hex: "2496ED",
-  },
-  github: {
-    title: "GitHub",
-    path: "M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z",
-    hex: "181717",
-  },
-  linkedin: {
-    title: "LinkedIn",
-    path: "M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5V9h3v10ZM6.5 7.7A1.75 1.75 0 1 1 6.5 4.2a1.75 1.75 0 0 1 0 3.5ZM19 19h-3v-4.9c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6V19h-3V9h2.9v1.4h.1c.4-.8 1.4-1.7 2.9-1.7 3.1 0 3.7 2 3.7 4.7V19Z",
-    hex: "0A66C2",
-  },
-  gitlab: {
-    title: "GitLab",
-    path: "m12 21 3.7-11.4H8.3L12 21ZM12 21 2.2 9.6h6.1L12 21Zm0 0 9.8-11.4h-6.1L12 21ZM2.2 9.6l2.5-7.7 3.6 7.7H2.2Zm19.6 0-2.5-7.7-3.6 7.7h6.1Z",
-    hex: "FC6D26",
-  },
-  jenkins: {
-    title: "Jenkins",
-    path: "M12 2a5 5 0 0 0-3.7 8.4c-2.5.8-4.3 3.1-4.3 5.9V21h16v-4.7c0-2.8-1.8-5.1-4.3-5.9A5 5 0 0 0 12 2Zm-2 13h4v2h-4v-2Z",
-    hex: "D24939",
-  },
-  datadog: {
-    title: "Datadog",
-    path: "M12 2 4.8 6v8L12 22l7.2-8V6L12 2Zm0 5.3 1.2 2.4 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4L12 7.3Z",
-    hex: "632CA6",
-  },
-  prometheus: {
-    title: "Prometheus",
-    path: "M12 2a10 10 0 1 0 10 10h-2.2a7.8 7.8 0 1 1-2.3-5.5l-2.1 2.1H22V2l-2.9 2.9A10 10 0 0 0 12 2Zm-1 4v7l5 3 .9-1.5-4.1-2.4V6H11Z",
-    hex: "E6522C",
-  },
-  grafana: {
-    title: "Grafana",
-    path: "M12 2c2 1.4 2.7 3 2.7 4.9 1.8-1 3.6-1 5.3.1.1 2.5-.6 4.3-2.3 5.6 1.7 1.3 2.4 3.1 2.3 5.6-1.7 1.1-3.5 1.1-5.3.1C14.7 20.2 14 21.6 12 23c-2-1.4-2.7-2.8-2.7-4.7-1.8 1-3.6 1-5.3-.1-.1-2.5.6-4.3 2.3-5.6C4.6 11.3 3.9 9.5 4 7c1.7-1.1 3.5-1.1 5.3-.1C9.3 5 10 3.4 12 2Z",
-    hex: "F46800",
-  },
-  linux: {
-    title: "Linux",
-    path: "M12 2c-2 0-3 2.2-3 5v3c-2 1-3 3-3 6h12c0-3-1-5-3-6V7c0-2.8-1-5-3-5Zm-2 7h1v1h-1V9Zm3 0h1v1h-1V9Z",
-    hex: "FCC624",
-  },
-  nextjs: {
-    title: "Next.js",
-    path: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 14.5-5-7H6v5h2v-1.5l5 7H15v-5h-2v1.5Z",
-    hex: "000000",
-  },
-  typescript: {
-    title: "TypeScript",
-    path: "M2 2h20v20H2V2Zm11 5v2h2v7h2V9h2V7h-6Zm-8 3v2c1.6-1.1 3.3.6 3.3 1.8 0 1.7-2.6 1.2-2.6 2.7 0 .9.9 1.4 1.7.5v-2c-1.5.9-3.2-.5-3.2-1.8C4.2 11.6 6.8 12 6.8 10.5 6.8 9.7 5.9 9.2 5 10Z",
-    hex: "3178C6",
-  },
-  tailwind: {
-    title: "Tailwind CSS",
-    path: "M12 6c-2.7 0-4.3 1.3-5 4 1-1.3 2.1-1.8 3.5-1.4.8.2 1.3.8 1.9 1.4 1 1 2.1 2 4.6 2 2.7 0 4.3-1.3 5-4-1 1.3-2.1 1.8-3.5 1.4-.8-.2-1.3-.8-1.9-1.4-1-1-2.1-2-4.6-2Zm-5 6c-2.7 0-4.3 1.3-5 4 1-1.3 2.1-1.8 3.5-1.4.8.2 1.3.8 1.9 1.4 1 1 2.1 2 4.6 2 2.7 0 4.3-1.3 5-4-1 1.3-2.1 1.8-3.5 1.4-.8-.2-1.3-.8-1.9-1.4-1-1-2.1-2-4.6-2Z",
-    hex: "06B6D4",
+  windows: {
+    title: "Windows",
+    path: "M0 3.45L9.9 2.1v9.23H0V3.45zm10.9-1.5L24 0v11.33H10.9V1.95zM0 12.67h9.9v9.23L0 20.55v-7.88zm10.9 0H24V24l-13.1-1.95V12.67z",
+    hex: "0078D7",
   },
 };
 
@@ -155,11 +117,17 @@ const toBrand = (icon: { title: string; path: string; hex: string }): BrandDefin
   path: icon.path,
   hex: icon.hex,
 });
+
 Object.assign(brands, {
   kubernetes: toBrand(siKubernetes),
   terraform: toBrand(siTerraform),
   docker: toBrand(siDocker),
   github: toBrand(siGithub),
+  linkedin: {
+    title: "LinkedIn",
+    path: "M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5V9h3v10ZM6.5 7.7A1.75 1.75 0 1 1 6.5 4.2a1.75 1.75 0 0 1 0 3.5ZM19 19h-3v-4.9c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6V19h-3V9h2.9v1.4h.1c.4-.8 1.4-1.7 2.9-1.7 3.1 0 3.7 2 3.7 4.7V19Z",
+    hex: "0A66C2",
+  },
   gitlab: toBrand(siGitlab),
   jenkins: toBrand(siJenkins),
   datadog: toBrand(siDatadog),
@@ -169,4 +137,12 @@ Object.assign(brands, {
   nextjs: toBrand(siNextdotjs),
   typescript: toBrand(siTypescript),
   tailwind: toBrand(siTailwindcss),
+  digitalocean: toBrand(siDigitalocean),
+  ansible: toBrand(siAnsible),
+  puppet: toBrand(siPuppet),
+  anthropic: toBrand(siAnthropic),
+  rancher: toBrand(siRancher),
+  hashicorp: toBrand(siHashicorp),
+  elk: toBrand(siElasticstack),
+  apple: toBrand(siApple),
 } satisfies Partial<Record<BrandName, BrandDefinition>>);

@@ -1,6 +1,9 @@
 import type { BrandName, IconName, TechnologyName } from "@/types/icon";
+
 export const technologies: Record<TechnologyName, { brand?: BrandName; fallback: IconName }> = {
-  aws: { fallback: "cloud" },
+  aws: { brand: "aws", fallback: "cloud" },
+  azure: { brand: "azure", fallback: "cloud" },
+  digitalocean: { brand: "digitalocean", fallback: "cloud" },
   kubernetes: { brand: "kubernetes", fallback: "containers" },
   terraform: { brand: "terraform", fallback: "infrastructure" },
   docker: { brand: "docker", fallback: "containers" },
@@ -14,7 +17,13 @@ export const technologies: Record<TechnologyName, { brand?: BrandName; fallback:
   nextjs: { brand: "nextjs", fallback: "projects" },
   typescript: { brand: "typescript", fallback: "skills" },
   tailwind: { brand: "tailwind", fallback: "skills" },
-  rancher: { fallback: "containers" },
+  rancher: { brand: "rancher", fallback: "containers" },
+  hashicorp: { brand: "hashicorp", fallback: "infrastructure" },
+  ansible: { brand: "ansible", fallback: "automation" },
+  puppet: { brand: "puppet", fallback: "automation" },
+  anthropic: { brand: "anthropic", fallback: "automation" },
+  elk: { brand: "elk", fallback: "observability" },
+  windows: { brand: "windows", fallback: "infrastructure" },
+  apple: { brand: "apple", fallback: "infrastructure" },
   cloudwatch: { fallback: "observability" },
-  elk: { fallback: "observability" },
 };

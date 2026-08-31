@@ -43,6 +43,16 @@ export type BrandName =
   | "linux"
   | "nextjs"
   | "typescript"
-  | "tailwind";
-export type TechnologyName =
-  Exclude<BrandName, "linkedin"> | "aws" | "rancher" | "cloudwatch" | "elk";
+  | "tailwind"
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | "ansible"
+  | "puppet"
+  | "anthropic"
+  | "rancher"
+  | "hashicorp"
+  | "elk"
+  | "windows"
+  | "apple";
+export type TechnologyName = Exclude<BrandName, "linkedin"> | "cloudwatch";
