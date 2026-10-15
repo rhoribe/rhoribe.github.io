@@ -24,40 +24,54 @@ export default function Page() {
       <main id="main" tabIndex={-1}>
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <AnimatedText delay={0.02}>
-              <p className="eyebrow">Site Reliability Engineering · Cloud · DevOps</p>
-            </AnimatedText>
             <AnimatedText delay={0.08}>
               <h1 id="hero-title">{profile.name}</h1>
             </AnimatedText>
             <AnimatedText delay={0.14}>
               <p className="headline">{profile.headline}</p>
             </AnimatedText>
-            <AnimatedText delay={0.2}>
+            <AnimatedText delay={0.2} className="hero-description">
               <p>{profile.intro}</p>
-              <p>{profile.technologyLine}</p>
+              <p className="technology-line">{profile.technologyLine}</p>
             </AnimatedText>
             <AnimatedText delay={0.26}>
               <p className="status">
                 <AppIcon name="reliability" size="compact" /> More than 15 years in technology
               </p>
-              <a className="button" href="#experience">
-                <AppIcon name="experience" size="compact" /> View experience <b aria-hidden>→</b>
-              </a>
-              <a className="hero-contact" href="#contact">
-                Start a conversation <span aria-hidden>→</span>
-              </a>
+              <div className="hero-actions">
+                <a className="button" href="#experience">
+                  <AppIcon name="experience" size="compact" /> View experience <b aria-hidden>→</b>
+                </a>
+                <a className="hero-contact" href="#contact">
+                  Start a conversation <span aria-hidden>→</span>
+                </a>
+              </div>
             </AnimatedText>
           </div>
-          <InfrastructureNodes />
+          <figure className="hero-diagram">
+            <InfrastructureNodes />
+            <figcaption>
+              Resilience, by design.<span>Illustrative cloud architecture</span>
+            </figcaption>
+          </figure>
         </section>
         <AnimatedSection id="about" className="section-container">
           <SectionHeading>About</SectionHeading>
-          {profile.about.map((p) => (
-            <p className="prose" key={p}>
-              {p}
-            </p>
-          ))}
+          <div className="about-layout">
+            <div className="about-copy">
+              {profile.about.map((p) => (
+                <p className="prose" key={p}>
+                  {p}
+                </p>
+              ))}
+            </div>
+            <div className="about-aside">
+              <h3>Leadership</h3>
+              <p>{profile.leadership}</p>
+              <h3>Career objective</h3>
+              <p>{profile.objective}</p>
+            </div>
+          </div>
           <section id="expertise" className="expertise-section" aria-labelledby="expertise-title">
             <h3 id="expertise-title">Core expertise</h3>
             <StaggerContainer className="grid">
@@ -75,10 +89,6 @@ export default function Page() {
               ))}
             </StaggerContainer>
           </section>
-          <h3>Leadership</h3>
-          <p>{profile.leadership}</p>
-          <h3>Career objective</h3>
-          <p>{profile.objective}</p>
         </AnimatedSection>
         <AnimatedSection id="experience" className="section-container">
           <SectionHeading>Professional experience</SectionHeading>
@@ -87,15 +97,17 @@ export default function Page() {
         <AnimatedSection id="credentials" className="section-container">
           <SectionHeading>Certifications</SectionHeading>
           <CertificationSection />
-          <SectionHeading>Education</SectionHeading>
-          <div className="grid">
-            {education.map((item) => (
-              <Card key={item}>
-                <p>
-                  <AppIcon name="education" /> {item}
-                </p>
-              </Card>
-            ))}
+          <div className="education-section">
+            <SectionHeading>Education</SectionHeading>
+            <div className="grid">
+              {education.map((item) => (
+                <Card key={item}>
+                  <p>
+                    <AppIcon name="education" /> {item}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </AnimatedSection>
         {publishableProjects.length > 0 && (
